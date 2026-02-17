@@ -145,6 +145,7 @@
             pictureBox35 = new PictureBox();
             dataGridView1 = new DataGridView();
             label50 = new Label();
+            panel11 = new Panel();
             dataGridView2 = new DataGridView();
             panel1.SuspendLayout();
             panel9.SuspendLayout();
@@ -192,6 +193,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox34).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox35).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
@@ -663,6 +665,7 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // label1
             // 
@@ -765,6 +768,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(98, 165);
             panel2.TabIndex = 10;
+            panel2.Paint += panel2_Paint;
             // 
             // pictureBox5
             // 
@@ -776,6 +780,7 @@
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox5.TabIndex = 7;
             pictureBox5.TabStop = false;
+            pictureBox5.Click += pictureBox5_Click;
             // 
             // label6
             // 
@@ -786,6 +791,7 @@
             label6.Size = new Size(54, 20);
             label6.TabIndex = 8;
             label6.Text = "Delete";
+            label6.Click += label6_Click;
             // 
             // label7
             // 
@@ -854,6 +860,7 @@
             // 
             label29.AutoSize = true;
             label29.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label29.ForeColor = Color.Black;
             label29.Location = new Point(17, 348);
             label29.Name = "label29";
             label29.Size = new Size(80, 20);
@@ -970,7 +977,7 @@
             // 
             textBox7.BackColor = Color.White;
             textBox7.BorderStyle = BorderStyle.FixedSingle;
-            textBox7.Location = new Point(135, 527);
+            textBox7.Location = new Point(135, 525);
             textBox7.Multiline = true;
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(748, 34);
@@ -992,7 +999,7 @@
             // 
             label34.AutoSize = true;
             label34.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label34.Location = new Point(17, 586);
+            label34.Location = new Point(17, 577);
             label34.Name = "label34";
             label34.Size = new Size(36, 20);
             label34.TabIndex = 31;
@@ -1002,7 +1009,7 @@
             // 
             label35.AutoSize = true;
             label35.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label35.Location = new Point(17, 633);
+            label35.Location = new Point(17, 621);
             label35.Name = "label35";
             label35.Size = new Size(45, 20);
             label35.TabIndex = 32;
@@ -1012,7 +1019,7 @@
             // 
             label36.AutoSize = true;
             label36.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label36.Location = new Point(526, 633);
+            label36.Location = new Point(526, 621);
             label36.Name = "label36";
             label36.Size = new Size(67, 20);
             label36.TabIndex = 33;
@@ -1022,7 +1029,7 @@
             // 
             textBox8.BackColor = Color.White;
             textBox8.BorderStyle = BorderStyle.FixedSingle;
-            textBox8.Location = new Point(606, 633);
+            textBox8.Location = new Point(606, 619);
             textBox8.Multiline = true;
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(276, 34);
@@ -1033,7 +1040,7 @@
             // 
             textBox9.BackColor = Color.White;
             textBox9.BorderStyle = BorderStyle.FixedSingle;
-            textBox9.Location = new Point(135, 583);
+            textBox9.Location = new Point(135, 575);
             textBox9.Multiline = true;
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(748, 31);
@@ -1044,7 +1051,7 @@
             // 
             textBox10.BackColor = Color.White;
             textBox10.BorderStyle = BorderStyle.FixedSingle;
-            textBox10.Location = new Point(135, 630);
+            textBox10.Location = new Point(135, 619);
             textBox10.Multiline = true;
             textBox10.Name = "textBox10";
             textBox10.Size = new Size(365, 34);
@@ -1055,7 +1062,7 @@
             // 
             label37.AutoSize = true;
             label37.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label37.Location = new Point(17, 695);
+            label37.Location = new Point(16, 673);
             label37.Name = "label37";
             label37.Size = new Size(99, 20);
             label37.TabIndex = 37;
@@ -1065,7 +1072,7 @@
             // 
             label38.AutoSize = true;
             label38.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label38.Location = new Point(16, 738);
+            label38.Location = new Point(16, 728);
             label38.Name = "label38";
             label38.Size = new Size(105, 20);
             label38.TabIndex = 38;
@@ -1075,7 +1082,7 @@
             // 
             label39.AutoSize = true;
             label39.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label39.Location = new Point(17, 788);
+            label39.Location = new Point(17, 774);
             label39.Name = "label39";
             label39.Size = new Size(47, 20);
             label39.TabIndex = 39;
@@ -1085,7 +1092,7 @@
             // 
             label40.AutoSize = true;
             label40.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label40.Location = new Point(17, 834);
+            label40.Location = new Point(17, 820);
             label40.Name = "label40";
             label40.Size = new Size(50, 20);
             label40.TabIndex = 40;
@@ -1095,7 +1102,7 @@
             // 
             textBox11.BackColor = Color.White;
             textBox11.BorderStyle = BorderStyle.FixedSingle;
-            textBox11.Location = new Point(135, 692);
+            textBox11.Location = new Point(135, 673);
             textBox11.Multiline = true;
             textBox11.Name = "textBox11";
             textBox11.Size = new Size(747, 34);
@@ -1106,7 +1113,7 @@
             // 
             textBox12.BackColor = Color.White;
             textBox12.BorderStyle = BorderStyle.FixedSingle;
-            textBox12.Location = new Point(135, 738);
+            textBox12.Location = new Point(138, 724);
             textBox12.Multiline = true;
             textBox12.Name = "textBox12";
             textBox12.Size = new Size(747, 34);
@@ -1117,7 +1124,7 @@
             // 
             textBox13.BackColor = Color.White;
             textBox13.BorderStyle = BorderStyle.FixedSingle;
-            textBox13.Location = new Point(135, 788);
+            textBox13.Location = new Point(138, 774);
             textBox13.Multiline = true;
             textBox13.Name = "textBox13";
             textBox13.Size = new Size(747, 34);
@@ -1128,7 +1135,7 @@
             // 
             textBox14.BackColor = Color.White;
             textBox14.BorderStyle = BorderStyle.FixedSingle;
-            textBox14.Location = new Point(135, 831);
+            textBox14.Location = new Point(138, 818);
             textBox14.Multiline = true;
             textBox14.Name = "textBox14";
             textBox14.Size = new Size(747, 34);
@@ -1233,7 +1240,7 @@
             // 
             label47.AutoSize = true;
             label47.ForeColor = Color.Red;
-            label47.Location = new Point(69, 463);
+            label47.Location = new Point(54, 466);
             label47.Name = "label47";
             label47.Size = new Size(16, 20);
             label47.TabIndex = 54;
@@ -1243,7 +1250,7 @@
             // 
             label48.AutoSize = true;
             label48.ForeColor = Color.Red;
-            label48.Location = new Point(116, 738);
+            label48.Location = new Point(116, 736);
             label48.Name = "label48";
             label48.Size = new Size(16, 20);
             label48.TabIndex = 55;
@@ -1253,7 +1260,7 @@
             // 
             label49.AutoSize = true;
             label49.ForeColor = Color.Red;
-            label49.Location = new Point(72, 788);
+            label49.Location = new Point(76, 777);
             label49.Name = "label49";
             label49.Size = new Size(16, 20);
             label49.TabIndex = 56;
@@ -1292,7 +1299,7 @@
             // pictureBox27
             // 
             pictureBox27.Image = (Image)resources.GetObject("pictureBox27.Image");
-            pictureBox27.Location = new Point(468, 633);
+            pictureBox27.Location = new Point(470, 621);
             pictureBox27.Name = "pictureBox27";
             pictureBox27.Size = new Size(30, 30);
             pictureBox27.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1332,7 +1339,7 @@
             // pictureBox31
             // 
             pictureBox31.Image = (Image)resources.GetObject("pictureBox31.Image");
-            pictureBox31.Location = new Point(852, 695);
+            pictureBox31.Location = new Point(856, 673);
             pictureBox31.Name = "pictureBox31";
             pictureBox31.Size = new Size(26, 26);
             pictureBox31.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1342,7 +1349,7 @@
             // pictureBox32
             // 
             pictureBox32.Image = (Image)resources.GetObject("pictureBox32.Image");
-            pictureBox32.Location = new Point(852, 744);
+            pictureBox32.Location = new Point(858, 728);
             pictureBox32.Name = "pictureBox32";
             pictureBox32.Size = new Size(24, 28);
             pictureBox32.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1352,7 +1359,7 @@
             // pictureBox33
             // 
             pictureBox33.Image = (Image)resources.GetObject("pictureBox33.Image");
-            pictureBox33.Location = new Point(848, 791);
+            pictureBox33.Location = new Point(854, 777);
             pictureBox33.Name = "pictureBox33";
             pictureBox33.Size = new Size(31, 31);
             pictureBox33.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1362,7 +1369,7 @@
             // pictureBox34
             // 
             pictureBox34.Image = (Image)resources.GetObject("pictureBox34.Image");
-            pictureBox34.Location = new Point(849, 834);
+            pictureBox34.Location = new Point(856, 820);
             pictureBox34.Name = "pictureBox34";
             pictureBox34.Size = new Size(30, 30);
             pictureBox34.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1385,7 +1392,7 @@
             dataGridView1.Location = new Point(901, 444);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(620, 427);
+            dataGridView1.Size = new Size(620, 410);
             dataGridView1.TabIndex = 69;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -1398,21 +1405,31 @@
             label50.TabIndex = 70;
             label50.Text = "Tasks";
             // 
+            // panel11
+            // 
+            panel11.AutoScroll = true;
+            panel11.Controls.Add(dataGridView2);
+            panel11.Location = new Point(135, 875);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(1394, 150);
+            panel11.TabIndex = 71;
+            // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(135, 890);
+            dataGridView2.Location = new Point(3, 3);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(1372, 190);
-            dataGridView2.TabIndex = 71;
+            dataGridView2.Size = new Size(1394, 150);
+            dataGridView2.TabIndex = 0;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1541, 1055);
-            Controls.Add(dataGridView2);
+            Controls.Add(panel11);
             Controls.Add(label50);
             Controls.Add(dataGridView1);
             Controls.Add(pictureBox35);
@@ -1471,8 +1488,9 @@
             Controls.Add(panel10);
             Controls.Add(linkLabel1);
             Controls.Add(panel1);
-            Enabled = false;
             Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "Hannah Brookly";
             Load += Form1_Load;
@@ -1530,6 +1548,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox34).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox35).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -1651,6 +1670,7 @@
         private PictureBox pictureBox35;
         private DataGridView dataGridView1;
         private Label label50;
+        private Panel panel11;
         private DataGridView dataGridView2;
     }
 }

@@ -94,59 +94,53 @@
             label29 = new Label();
             label30 = new Label();
             label31 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
+            txtFirstName = new TextBox();
+            txtLastName = new TextBox();
+            txtFullName = new TextBox();
             label32 = new Label();
             label33 = new Label();
-            textBox7 = new TextBox();
+            txtAddress = new TextBox();
             pictureBox23 = new PictureBox();
             label34 = new Label();
             label35 = new Label();
             label36 = new Label();
-            textBox8 = new TextBox();
-            textBox9 = new TextBox();
-            textBox10 = new TextBox();
+            txtZipcode = new TextBox();
+            txtCity = new TextBox();
             label37 = new Label();
             label38 = new Label();
             label39 = new Label();
             label40 = new Label();
-            textBox11 = new TextBox();
-            textBox12 = new TextBox();
-            textBox13 = new TextBox();
-            textBox14 = new TextBox();
+            txtHomePhone = new TextBox();
+            txtMobilePhone = new TextBox();
+            txtEmail = new TextBox();
+            txtskype = new TextBox();
             notifyIcon1 = new NotifyIcon(components);
             label41 = new Label();
             label42 = new Label();
             label43 = new Label();
             label44 = new Label();
-            textBox15 = new TextBox();
-            textBox16 = new TextBox();
-            textBox17 = new TextBox();
             label45 = new Label();
             label46 = new Label();
             label47 = new Label();
             label48 = new Label();
             label49 = new Label();
-            pictureBox24 = new PictureBox();
-            pictureBox25 = new PictureBox();
-            pictureBox26 = new PictureBox();
-            pictureBox27 = new PictureBox();
-            pictureBox28 = new PictureBox();
-            pictureBox29 = new PictureBox();
-            pictureBox30 = new PictureBox();
             pictureBox31 = new PictureBox();
             pictureBox32 = new PictureBox();
             pictureBox33 = new PictureBox();
             pictureBox34 = new PictureBox();
-            pictureBox35 = new PictureBox();
             dataGridView1 = new DataGridView();
             label50 = new Label();
             panel11 = new Panel();
             dataGridView2 = new DataGridView();
+            btnCreate = new Button();
+            dTPBirthDate = new DateTimePicker();
+            cbxTitle = new ComboBox();
+            cbxPrefix = new ComboBox();
+            cbxState = new ComboBox();
+            cbxDepartment = new ComboBox();
+            cbxStatus = new ComboBox();
+            dTPHireDate = new DateTimePicker();
+            DELETE = new Button();
             panel1.SuspendLayout();
             panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
@@ -180,18 +174,10 @@
             panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox22).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox23).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox24).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox25).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox26).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox27).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox28).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox29).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox30).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox31).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox32).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox33).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox34).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox35).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -887,71 +873,35 @@
             label31.TabIndex = 20;
             label31.Text = "Title";
             // 
-            // textBox1
+            // txtFirstName
             // 
-            textBox1.BackColor = Color.White;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(135, 233);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(464, 34);
-            textBox1.TabIndex = 21;
-            textBox1.Text = "Hannah";
+            txtFirstName.BackColor = Color.White;
+            txtFirstName.BorderStyle = BorderStyle.FixedSingle;
+            txtFirstName.Location = new Point(135, 233);
+            txtFirstName.Multiline = true;
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.Size = new Size(464, 34);
+            txtFirstName.TabIndex = 21;
             // 
-            // textBox2
+            // txtLastName
             // 
-            textBox2.BackColor = Color.White;
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(135, 289);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(464, 34);
-            textBox2.TabIndex = 22;
-            textBox2.Text = "Brookyln";
+            txtLastName.BackColor = Color.White;
+            txtLastName.BorderStyle = BorderStyle.FixedSingle;
+            txtLastName.Location = new Point(135, 289);
+            txtLastName.Multiline = true;
+            txtLastName.Name = "txtLastName";
+            txtLastName.Size = new Size(464, 34);
+            txtLastName.TabIndex = 22;
             // 
-            // textBox3
+            // txtFullName
             // 
-            textBox3.BackColor = Color.White;
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(135, 345);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(464, 34);
-            textBox3.TabIndex = 23;
-            textBox3.Text = "Hannah Brookyln";
-            // 
-            // textBox4
-            // 
-            textBox4.BackColor = Color.White;
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Location = new Point(135, 395);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(464, 34);
-            textBox4.TabIndex = 24;
-            textBox4.Text = "7/2/1984";
-            // 
-            // textBox5
-            // 
-            textBox5.BackColor = Color.White;
-            textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Location = new Point(135, 452);
-            textBox5.Multiline = true;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(205, 34);
-            textBox5.TabIndex = 25;
-            textBox5.Text = "Online Sales Manager";
-            // 
-            // textBox6
-            // 
-            textBox6.BackColor = Color.White;
-            textBox6.BorderStyle = BorderStyle.FixedSingle;
-            textBox6.Location = new Point(440, 452);
-            textBox6.Multiline = true;
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(165, 34);
-            textBox6.TabIndex = 26;
-            textBox6.Text = "Mrs";
+            txtFullName.BackColor = Color.White;
+            txtFullName.BorderStyle = BorderStyle.FixedSingle;
+            txtFullName.Location = new Point(135, 345);
+            txtFullName.Multiline = true;
+            txtFullName.Name = "txtFullName";
+            txtFullName.Size = new Size(464, 34);
+            txtFullName.TabIndex = 23;
             // 
             // label32
             // 
@@ -973,16 +923,15 @@
             label33.TabIndex = 28;
             label33.Text = "Address";
             // 
-            // textBox7
+            // txtAddress
             // 
-            textBox7.BackColor = Color.White;
-            textBox7.BorderStyle = BorderStyle.FixedSingle;
-            textBox7.Location = new Point(135, 525);
-            textBox7.Multiline = true;
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(748, 34);
-            textBox7.TabIndex = 29;
-            textBox7.Text = "536 Marsh Street";
+            txtAddress.BackColor = Color.White;
+            txtAddress.BorderStyle = BorderStyle.FixedSingle;
+            txtAddress.Location = new Point(135, 525);
+            txtAddress.Multiline = true;
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(748, 34);
+            txtAddress.TabIndex = 29;
             // 
             // pictureBox23
             // 
@@ -1025,38 +974,25 @@
             label36.TabIndex = 33;
             label36.Text = "ZIPCode";
             // 
-            // textBox8
+            // txtZipcode
             // 
-            textBox8.BackColor = Color.White;
-            textBox8.BorderStyle = BorderStyle.FixedSingle;
-            textBox8.Location = new Point(606, 619);
-            textBox8.Multiline = true;
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(276, 34);
-            textBox8.TabIndex = 34;
-            textBox8.Text = "93401";
+            txtZipcode.BackColor = Color.White;
+            txtZipcode.BorderStyle = BorderStyle.FixedSingle;
+            txtZipcode.Location = new Point(606, 619);
+            txtZipcode.Multiline = true;
+            txtZipcode.Name = "txtZipcode";
+            txtZipcode.Size = new Size(276, 34);
+            txtZipcode.TabIndex = 34;
             // 
-            // textBox9
+            // txtCity
             // 
-            textBox9.BackColor = Color.White;
-            textBox9.BorderStyle = BorderStyle.FixedSingle;
-            textBox9.Location = new Point(135, 575);
-            textBox9.Multiline = true;
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(748, 31);
-            textBox9.TabIndex = 35;
-            textBox9.Text = "San Luis Opisbo";
-            // 
-            // textBox10
-            // 
-            textBox10.BackColor = Color.White;
-            textBox10.BorderStyle = BorderStyle.FixedSingle;
-            textBox10.Location = new Point(135, 619);
-            textBox10.Multiline = true;
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(365, 34);
-            textBox10.TabIndex = 36;
-            textBox10.Text = "CA";
+            txtCity.BackColor = Color.White;
+            txtCity.BorderStyle = BorderStyle.FixedSingle;
+            txtCity.Location = new Point(135, 575);
+            txtCity.Multiline = true;
+            txtCity.Name = "txtCity";
+            txtCity.Size = new Size(748, 31);
+            txtCity.TabIndex = 35;
             // 
             // label37
             // 
@@ -1098,49 +1034,45 @@
             label40.TabIndex = 40;
             label40.Text = "Skype";
             // 
-            // textBox11
+            // txtHomePhone
             // 
-            textBox11.BackColor = Color.White;
-            textBox11.BorderStyle = BorderStyle.FixedSingle;
-            textBox11.Location = new Point(135, 673);
-            textBox11.Multiline = true;
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(747, 34);
-            textBox11.TabIndex = 41;
-            textBox11.Text = "(805)555-7247";
+            txtHomePhone.BackColor = Color.White;
+            txtHomePhone.BorderStyle = BorderStyle.FixedSingle;
+            txtHomePhone.Location = new Point(135, 673);
+            txtHomePhone.Multiline = true;
+            txtHomePhone.Name = "txtHomePhone";
+            txtHomePhone.Size = new Size(747, 34);
+            txtHomePhone.TabIndex = 41;
             // 
-            // textBox12
+            // txtMobilePhone
             // 
-            textBox12.BackColor = Color.White;
-            textBox12.BorderStyle = BorderStyle.FixedSingle;
-            textBox12.Location = new Point(138, 724);
-            textBox12.Multiline = true;
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(747, 34);
-            textBox12.TabIndex = 42;
-            textBox12.Text = "(805)555-3627";
+            txtMobilePhone.BackColor = Color.White;
+            txtMobilePhone.BorderStyle = BorderStyle.FixedSingle;
+            txtMobilePhone.Location = new Point(138, 724);
+            txtMobilePhone.Multiline = true;
+            txtMobilePhone.Name = "txtMobilePhone";
+            txtMobilePhone.Size = new Size(747, 34);
+            txtMobilePhone.TabIndex = 42;
             // 
-            // textBox13
+            // txtEmail
             // 
-            textBox13.BackColor = Color.White;
-            textBox13.BorderStyle = BorderStyle.FixedSingle;
-            textBox13.Location = new Point(138, 774);
-            textBox13.Multiline = true;
-            textBox13.Name = "textBox13";
-            textBox13.Size = new Size(747, 34);
-            textBox13.TabIndex = 43;
-            textBox13.Text = "hannahb@dx-email.com";
+            txtEmail.BackColor = Color.White;
+            txtEmail.BorderStyle = BorderStyle.FixedSingle;
+            txtEmail.Location = new Point(138, 774);
+            txtEmail.Multiline = true;
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(747, 34);
+            txtEmail.TabIndex = 43;
             // 
-            // textBox14
+            // txtskype
             // 
-            textBox14.BackColor = Color.White;
-            textBox14.BorderStyle = BorderStyle.FixedSingle;
-            textBox14.Location = new Point(138, 818);
-            textBox14.Multiline = true;
-            textBox14.Name = "textBox14";
-            textBox14.Size = new Size(747, 34);
-            textBox14.TabIndex = 44;
-            textBox14.Text = "hannahb_DX_Skype";
+            txtskype.BackColor = Color.White;
+            txtskype.BorderStyle = BorderStyle.FixedSingle;
+            txtskype.Location = new Point(138, 818);
+            txtskype.Multiline = true;
+            txtskype.Name = "txtskype";
+            txtskype.Size = new Size(747, 34);
+            txtskype.TabIndex = 44;
             // 
             // notifyIcon1
             // 
@@ -1182,39 +1114,6 @@
             label44.Size = new Size(89, 20);
             label44.TabIndex = 48;
             label44.Text = "Evaluations";
-            // 
-            // textBox15
-            // 
-            textBox15.BackColor = Color.White;
-            textBox15.BorderStyle = BorderStyle.FixedSingle;
-            textBox15.Location = new Point(1006, 236);
-            textBox15.Multiline = true;
-            textBox15.Name = "textBox15";
-            textBox15.Size = new Size(514, 34);
-            textBox15.TabIndex = 49;
-            textBox15.Text = "Sales";
-            // 
-            // textBox16
-            // 
-            textBox16.BackColor = Color.White;
-            textBox16.BorderStyle = BorderStyle.FixedSingle;
-            textBox16.Location = new Point(1006, 292);
-            textBox16.Multiline = true;
-            textBox16.Name = "textBox16";
-            textBox16.Size = new Size(515, 34);
-            textBox16.TabIndex = 50;
-            textBox16.Text = "Commission";
-            // 
-            // textBox17
-            // 
-            textBox17.BackColor = Color.White;
-            textBox17.BorderStyle = BorderStyle.FixedSingle;
-            textBox17.Location = new Point(1006, 345);
-            textBox17.Multiline = true;
-            textBox17.Name = "textBox17";
-            textBox17.Size = new Size(514, 34);
-            textBox17.TabIndex = 51;
-            textBox17.Text = "1/8/2011";
             // 
             // label45
             // 
@@ -1266,76 +1165,6 @@
             label49.TabIndex = 56;
             label49.Text = "*";
             // 
-            // pictureBox24
-            // 
-            pictureBox24.Image = (Image)resources.GetObject("pictureBox24.Image");
-            pictureBox24.Location = new Point(536, 453);
-            pictureBox24.Name = "pictureBox24";
-            pictureBox24.Size = new Size(30, 30);
-            pictureBox24.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox24.TabIndex = 57;
-            pictureBox24.TabStop = false;
-            // 
-            // pictureBox25
-            // 
-            pictureBox25.Image = (Image)resources.GetObject("pictureBox25.Image");
-            pictureBox25.Location = new Point(563, 398);
-            pictureBox25.Name = "pictureBox25";
-            pictureBox25.Size = new Size(30, 30);
-            pictureBox25.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox25.TabIndex = 58;
-            pictureBox25.TabStop = false;
-            // 
-            // pictureBox26
-            // 
-            pictureBox26.Image = (Image)resources.GetObject("pictureBox26.Image");
-            pictureBox26.Location = new Point(311, 453);
-            pictureBox26.Name = "pictureBox26";
-            pictureBox26.Size = new Size(29, 31);
-            pictureBox26.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox26.TabIndex = 59;
-            pictureBox26.TabStop = false;
-            // 
-            // pictureBox27
-            // 
-            pictureBox27.Image = (Image)resources.GetObject("pictureBox27.Image");
-            pictureBox27.Location = new Point(470, 621);
-            pictureBox27.Name = "pictureBox27";
-            pictureBox27.Size = new Size(30, 30);
-            pictureBox27.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox27.TabIndex = 60;
-            pictureBox27.TabStop = false;
-            // 
-            // pictureBox28
-            // 
-            pictureBox28.Image = (Image)resources.GetObject("pictureBox28.Image");
-            pictureBox28.Location = new Point(1487, 239);
-            pictureBox28.Name = "pictureBox28";
-            pictureBox28.Size = new Size(30, 30);
-            pictureBox28.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox28.TabIndex = 61;
-            pictureBox28.TabStop = false;
-            // 
-            // pictureBox29
-            // 
-            pictureBox29.Image = (Image)resources.GetObject("pictureBox29.Image");
-            pictureBox29.Location = new Point(1487, 293);
-            pictureBox29.Name = "pictureBox29";
-            pictureBox29.Size = new Size(30, 30);
-            pictureBox29.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox29.TabIndex = 62;
-            pictureBox29.TabStop = false;
-            // 
-            // pictureBox30
-            // 
-            pictureBox30.Image = (Image)resources.GetObject("pictureBox30.Image");
-            pictureBox30.Location = new Point(1487, 348);
-            pictureBox30.Name = "pictureBox30";
-            pictureBox30.Size = new Size(30, 30);
-            pictureBox30.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox30.TabIndex = 63;
-            pictureBox30.TabStop = false;
-            // 
             // pictureBox31
             // 
             pictureBox31.Image = (Image)resources.GetObject("pictureBox31.Image");
@@ -1376,16 +1205,6 @@
             pictureBox34.TabIndex = 67;
             pictureBox34.TabStop = false;
             // 
-            // pictureBox35
-            // 
-            pictureBox35.Image = (Image)resources.GetObject("pictureBox35.Image");
-            pictureBox35.Location = new Point(566, 453);
-            pictureBox35.Name = "pictureBox35";
-            pictureBox35.Size = new Size(33, 31);
-            pictureBox35.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox35.TabIndex = 68;
-            pictureBox35.TabStop = false;
-            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1416,6 +1235,7 @@
             // 
             // dataGridView2
             // 
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Location = new Point(3, 3);
             dataGridView2.Name = "dataGridView2";
@@ -1423,63 +1243,149 @@
             dataGridView2.Size = new Size(1394, 150);
             dataGridView2.TabIndex = 0;
             // 
+            // btnCreate
+            // 
+            btnCreate.BackColor = Color.LightSeaGreen;
+            btnCreate.FlatAppearance.BorderColor = Color.Black;
+            btnCreate.FlatAppearance.BorderSize = 3;
+            btnCreate.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCreate.ForeColor = SystemColors.ButtonHighlight;
+            btnCreate.Location = new Point(1148, 385);
+            btnCreate.Name = "btnCreate";
+            btnCreate.Size = new Size(106, 44);
+            btnCreate.TabIndex = 72;
+            btnCreate.Text = "CREATE";
+            btnCreate.UseVisualStyleBackColor = false;
+            btnCreate.Click += button1_Click;
+            // 
+            // dTPBirthDate
+            // 
+            dTPBirthDate.Location = new Point(138, 402);
+            dTPBirthDate.Name = "dTPBirthDate";
+            dTPBirthDate.Size = new Size(461, 27);
+            dTPBirthDate.TabIndex = 74;
+            // 
+            // cbxTitle
+            // 
+            cbxTitle.FlatStyle = FlatStyle.Popup;
+            cbxTitle.FormattingEnabled = true;
+            cbxTitle.Items.AddRange(new object[] { "-Select-", "Online Order Manager", "Online Sales Manager", "Online Product Manager" });
+            cbxTitle.Location = new Point(141, 458);
+            cbxTitle.Name = "cbxTitle";
+            cbxTitle.Size = new Size(209, 28);
+            cbxTitle.TabIndex = 75;
+            // 
+            // cbxPrefix
+            // 
+            cbxPrefix.FlatStyle = FlatStyle.Popup;
+            cbxPrefix.FormattingEnabled = true;
+            cbxPrefix.Items.AddRange(new object[] { "-Select-", "Mr", "Mrs" });
+            cbxPrefix.Location = new Point(432, 458);
+            cbxPrefix.Name = "cbxPrefix";
+            cbxPrefix.Size = new Size(151, 28);
+            cbxPrefix.TabIndex = 76;
+            // 
+            // cbxState
+            // 
+            cbxState.FlatStyle = FlatStyle.Popup;
+            cbxState.FormattingEnabled = true;
+            cbxState.Items.AddRange(new object[] { "-Select-", "CA", "LosAngles" });
+            cbxState.Location = new Point(135, 625);
+            cbxState.Name = "cbxState";
+            cbxState.Size = new Size(285, 28);
+            cbxState.TabIndex = 78;
+            // 
+            // cbxDepartment
+            // 
+            cbxDepartment.FlatStyle = FlatStyle.Popup;
+            cbxDepartment.FormattingEnabled = true;
+            cbxDepartment.Items.AddRange(new object[] { "-Select-" });
+            cbxDepartment.Location = new Point(1021, 239);
+            cbxDepartment.Name = "cbxDepartment";
+            cbxDepartment.Size = new Size(410, 28);
+            cbxDepartment.TabIndex = 79;
+            // 
+            // cbxStatus
+            // 
+            cbxStatus.FlatStyle = FlatStyle.Popup;
+            cbxStatus.FormattingEnabled = true;
+            cbxStatus.Items.AddRange(new object[] { "-Select-", "Active", "InActive" });
+            cbxStatus.Location = new Point(1021, 292);
+            cbxStatus.Name = "cbxStatus";
+            cbxStatus.Size = new Size(410, 28);
+            cbxStatus.TabIndex = 80;
+            // 
+            // dTPHireDate
+            // 
+            dTPHireDate.Location = new Point(1028, 340);
+            dTPHireDate.Name = "dTPHireDate";
+            dTPHireDate.Size = new Size(403, 27);
+            dTPHireDate.TabIndex = 81;
+            // 
+            // DELETE
+            // 
+            DELETE.BackColor = Color.LightSeaGreen;
+            DELETE.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DELETE.ForeColor = SystemColors.ButtonHighlight;
+            DELETE.Location = new Point(1283, 385);
+            DELETE.Name = "DELETE";
+            DELETE.Size = new Size(106, 44);
+            DELETE.TabIndex = 82;
+            DELETE.Text = "DELETE";
+            DELETE.UseVisualStyleBackColor = false;
+            DELETE.Click += DELETE_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(1541, 1055);
+            Controls.Add(DELETE);
+            Controls.Add(dTPHireDate);
+            Controls.Add(cbxStatus);
+            Controls.Add(cbxDepartment);
+            Controls.Add(cbxState);
+            Controls.Add(cbxPrefix);
+            Controls.Add(cbxTitle);
+            Controls.Add(dTPBirthDate);
+            Controls.Add(btnCreate);
             Controls.Add(panel11);
             Controls.Add(label50);
             Controls.Add(dataGridView1);
-            Controls.Add(pictureBox35);
             Controls.Add(pictureBox34);
             Controls.Add(pictureBox33);
             Controls.Add(pictureBox32);
             Controls.Add(pictureBox31);
-            Controls.Add(pictureBox30);
-            Controls.Add(pictureBox29);
-            Controls.Add(pictureBox28);
-            Controls.Add(pictureBox27);
-            Controls.Add(pictureBox26);
-            Controls.Add(pictureBox25);
-            Controls.Add(pictureBox24);
             Controls.Add(label49);
             Controls.Add(label48);
             Controls.Add(label47);
             Controls.Add(label46);
             Controls.Add(label45);
-            Controls.Add(textBox17);
-            Controls.Add(textBox16);
-            Controls.Add(textBox15);
             Controls.Add(label44);
             Controls.Add(label43);
             Controls.Add(label42);
             Controls.Add(label41);
-            Controls.Add(textBox14);
-            Controls.Add(textBox13);
-            Controls.Add(textBox12);
-            Controls.Add(textBox11);
+            Controls.Add(txtskype);
+            Controls.Add(txtEmail);
+            Controls.Add(txtMobilePhone);
+            Controls.Add(txtHomePhone);
             Controls.Add(label40);
             Controls.Add(label39);
             Controls.Add(label38);
             Controls.Add(label37);
-            Controls.Add(textBox10);
-            Controls.Add(textBox9);
-            Controls.Add(textBox8);
+            Controls.Add(txtCity);
+            Controls.Add(txtZipcode);
             Controls.Add(label36);
             Controls.Add(label35);
             Controls.Add(label34);
             Controls.Add(pictureBox23);
-            Controls.Add(textBox7);
+            Controls.Add(txtAddress);
             Controls.Add(label33);
             Controls.Add(label32);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtFullName);
+            Controls.Add(txtLastName);
+            Controls.Add(txtFirstName);
             Controls.Add(label31);
             Controls.Add(label30);
             Controls.Add(label29);
@@ -1535,18 +1441,10 @@
             panel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox22).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox23).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox24).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox25).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox26).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox27).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox28).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox29).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox30).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox31).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox32).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox33).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox34).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox35).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
@@ -1619,58 +1517,52 @@
         private Label label29;
         private Label label30;
         private Label label31;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
+        private TextBox txtFirstName;
+        private TextBox txtLastName;
+        private TextBox txtFullName;
         private Label label32;
         private Label label33;
-        private TextBox textBox7;
+        private TextBox txtAddress;
         private PictureBox pictureBox23;
         private Label label34;
         private Label label35;
         private Label label36;
-        private TextBox textBox8;
-        private TextBox textBox9;
-        private TextBox textBox10;
+        private TextBox txtZipcode;
+        private TextBox txtCity;
         private Label label37;
         private Label label38;
         private Label label39;
         private Label label40;
-        private TextBox textBox11;
-        private TextBox textBox12;
-        private TextBox textBox13;
-        private TextBox textBox14;
+        private TextBox txtHomePhone;
+        private TextBox txtMobilePhone;
+        private TextBox txtEmail;
+        private TextBox txtskype;
         private NotifyIcon notifyIcon1;
         private Label label41;
         private Label label42;
         private Label label43;
         private Label label44;
-        private TextBox textBox15;
-        private TextBox textBox16;
-        private TextBox textBox17;
         private Label label45;
         private Label label46;
         private Label label47;
         private Label label48;
         private Label label49;
-        private PictureBox pictureBox24;
-        private PictureBox pictureBox25;
-        private PictureBox pictureBox26;
-        private PictureBox pictureBox27;
-        private PictureBox pictureBox28;
-        private PictureBox pictureBox29;
-        private PictureBox pictureBox30;
         private PictureBox pictureBox31;
         private PictureBox pictureBox32;
         private PictureBox pictureBox33;
         private PictureBox pictureBox34;
-        private PictureBox pictureBox35;
         private DataGridView dataGridView1;
         private Label label50;
         private Panel panel11;
         private DataGridView dataGridView2;
+        private Button btnCreate;
+        private DateTimePicker dTPBirthDate;
+        private ComboBox cbxTitle;
+        private ComboBox cbxPrefix;
+        private ComboBox cbxState;
+        private ComboBox cbxDepartment;
+        private ComboBox cbxStatus;
+        private DateTimePicker dTPHireDate;
+        private Button DELETE;
     }
 }

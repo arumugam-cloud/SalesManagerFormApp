@@ -1,81 +1,126 @@
-using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
+using System.Configuration;
+using System.Data;
 
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace SalesManagerFormApp
 {
     public partial class Form1 : Form
     {
-        public class Product
-        {
-            public Image Priority { get; set; }
-            public string DueDate { get; set; }
-            public string Subject { get; set; }
-            public string Description { get; set; }
-            public Image Completion { get; set; }
-        }
-        public class ManagerForm
-        {
-            public string CreatedOn { get; set; }
-            public string Subject { get; set; }
-            public string Manager { get; set; }
+        SqlConnection connection = new SqlConnection();
+        string connectionString = ConfigurationManager.ConnectionStrings["EmpDBCS"].ConnectionString;
 
-        }
-        protected List<Product> GetProductList()
-        {
-            Image img1 = Image.FromFile(@"C:\Users\Sudharsni\Downloads\priority.png");
-            Image img2 = Image.FromFile(@"C:\Users\Sudharsni\Downloads\completion.jpg");
+        //public class Product
+        //{
+        //    public Image Priority { get; set; }
+        //    public string DueDate { get; set; }
+        //    public string Subject { get; set; }
+        //    public string Description { get; set; }
+        //    public Image Completion { get; set; }
+        //}
+        //public class ManagerForm
+        //{
+        //    public string CreatedOn { get; set; }
+        //    public string Subject { get; set; }
+        //    public string Manager { get; set; }
 
-            List<Product> products = new List<Product>();
+        //}
+        //protected List<Product> GetProductList()
+        //{
+        //    Image img1 = Image.FromFile(@"C:\Users\Sudharsni\Downloads\priority.png");
+        //    Image img2 = Image.FromFile(@"C:\Users\Sudharsni\Downloads\completion.jpg");
 
-            // Assume you have an 'Images' folder in your project directory
-            products.Add(new Product { Priority = img1, DueDate = "2/22/2020", Subject = "Direct vs Sales Comparison Report", Description = "To better understand 2020 online sales information", Completion = img2 });
-            products.Add(new Product { Priority = img1, DueDate = "4/3/2020", Subject = "Comment on Revenue Projections", Description = "Board requires 2020 project report comment on sales report and my projections", Completion = img2 });
-            products.Add(new Product { Priority = img1, DueDate = "9/11/2020", Subject = "New Online Marketing Strtegy", Description = "We need to do something to stop the fall in online sales right away", Completion = img2 });
+        //    List<Product> products = new List<Product>();
 
-            // Add more items as needed
-            return products;
-        }
-        protected List<ManagerForm> GetManagerForm()
-        {
+        //    // Assume you have an 'Images' folder in your project directory
+        //    products.Add(new Product { Priority = img1, DueDate = "2/22/2020", Subject = "Direct vs Sales Comparison Report", Description = "To better understand 2020 online sales information", Completion = img2 });
+        //    products.Add(new Product { Priority = img1, DueDate = "4/3/2020", Subject = "Comment on Revenue Projections", Description = "Board requires 2020 project report comment on sales report and my projections", Completion = img2 });
+        //    products.Add(new Product { Priority = img1, DueDate = "9/11/2020", Subject = "New Online Marketing Strtegy", Description = "We need to do something to stop the fall in online sales right away", Completion = img2 });
 
-            List<ManagerForm> managerForms = new List<ManagerForm>();
+        //    // Add more items as needed
+        //    return products;
+        //}
+        //protected List<ManagerForm> GetManagerForm()
+        //{
 
-            // Assume you have an 'Images' folder in your project directory
-            managerForms.Add(new ManagerForm { CreatedOn = "2/1/2010", Subject = "Comparison Report", Manager = "Wills Smith" });
-            managerForms.Add(new ManagerForm { CreatedOn = "27/11/2011", Subject = "Stack Report", Manager = "Ronald" });
-            managerForms.Add(new ManagerForm { CreatedOn = "29/12/2010", Subject = "Product Manager Report", Manager = "Hailey" });
-            managerForms.Add(new ManagerForm { CreatedOn = "2/1/2014", Subject = "Comparison Report", Manager = "Mizi" });
-            managerForms.Add(new ManagerForm { CreatedOn = "27/11/2012", Subject = "Stack Report", Manager = "Masha" });
-            managerForms.Add(new ManagerForm { CreatedOn = "29/12/2013", Subject = "Product Manager Report", Manager = "Jenny" });
-            managerForms.Add(new ManagerForm { CreatedOn = "2/1/2010", Subject = "Comparison Report", Manager = "Wills Smith" });
-            managerForms.Add(new ManagerForm { CreatedOn = "27/11/2011", Subject = "Stack Report", Manager = "Ronald" });
-            managerForms.Add(new ManagerForm { CreatedOn = "29/12/2010", Subject = "Product Manager Report", Manager = "Hailey" });
-            managerForms.Add(new ManagerForm { CreatedOn = "2/1/2014", Subject = "Comparison Report", Manager = "Mizi" });
-            managerForms.Add(new ManagerForm { CreatedOn = "27/11/2012", Subject = "Stack Report", Manager = "Masha" });
-            managerForms.Add(new ManagerForm { CreatedOn = "29/12/2013", Subject = "Product Manager Report", Manager = "Jenny" });
-            managerForms.Add(new ManagerForm { CreatedOn = "27/11/2012", Subject = "Stack Report", Manager = "Masha" });
-            managerForms.Add(new ManagerForm { CreatedOn = "29/12/2013", Subject = "Product Manager Report", Manager = "Jenny" });
-            // Add more items as needed
-            return managerForms;
-        }
+        //    List<ManagerForm> managerForms = new List<ManagerForm>();
+
+        //    // Assume you have an 'Images' folder in your project directory
+        //    managerForms.Add(new ManagerForm { CreatedOn = "2/1/2010", Subject = "Comparison Report", Manager = "Wills Smith" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "27/11/2011", Subject = "Stack Report", Manager = "Ronald" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "29/12/2010", Subject = "Product Manager Report", Manager = "Hailey" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "2/1/2014", Subject = "Comparison Report", Manager = "Mizi" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "27/11/2012", Subject = "Stack Report", Manager = "Masha" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "29/12/2013", Subject = "Product Manager Report", Manager = "Jenny" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "2/1/2010", Subject = "Comparison Report", Manager = "Wills Smith" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "27/11/2011", Subject = "Stack Report", Manager = "Ronald" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "29/12/2010", Subject = "Product Manager Report", Manager = "Hailey" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "2/1/2014", Subject = "Comparison Report", Manager = "Mizi" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "27/11/2012", Subject = "Stack Report", Manager = "Masha" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "29/12/2013", Subject = "Product Manager Report", Manager = "Jenny" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "27/11/2012", Subject = "Stack Report", Manager = "Masha" });
+        //    managerForms.Add(new ManagerForm { CreatedOn = "29/12/2013", Subject = "Product Manager Report", Manager = "Jenny" });
+        //    // Add more items as needed
+        //    return managerForms;
+        // }
         public Form1()
         {
             InitializeComponent();
         }
+        private void DepartmentName()
+        {
+            string query = "SELECT DepartmentID, DepartmentName FROM Department";
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+
+                try
+                {
+                    connection.Open();
+                    adapter.Fill(dataTable);
+                    DataRow dr = dataTable.NewRow();
+                    dr["DepartmentID"] = DBNull.Value; // Use NULL for the ID or a specific indicator like -1 or 0
+                    dr["DepartmentName"] = "-- Select --";
+                    dataTable.Rows.InsertAt(dr, 0);
+                    cbxDepartment.DataSource = dataTable;
+                    cbxDepartment.DisplayMember = "DepartmentName";
+                    cbxDepartment.ValueMember = "DepartmentID";
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading departments: " + ex.Message);
+                }
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataGridView2.DataSource = GetProductList();
-            dataGridView2.Columns[2].Width = 300;
-            dataGridView2.Columns[3].Width = 650;
-            dataGridView2.Columns[4].Width = 200;
-            dataGridView2.Columns[0].Width = 70;
-            if (dataGridView2.Columns["Priority"] is DataGridViewImageColumn imgCol)
-            {
-                imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
-            }
-            dataGridView1.DataSource = GetManagerForm();
-            dataGridView1.Columns[1].Width = 200;
-            dataGridView1.Columns[2].Width = 250;
+            DepartmentName();
+            LoadDepartmentData();
+            LoadEmployeeData();
+            dataGridView1.Columns[0].Width = 300;
+            dataGridView1.Columns[1].Width = 300;
+            cbxState.SelectedIndex = 0;
+            cbxPrefix.SelectedIndex = 0;
+            cbxState.SelectedIndex = 0;
+            cbxTitle.SelectedIndex = 0;
+            cbxStatus.SelectedIndex = 0;
+            cbxDepartment.SelectedIndex = 0;
+            //dataGridView2.DataSource = GetProductList();
+            //dataGridView2.Columns[2].Width = 300;
+            //dataGridView2.Columns[3].Width = 650;
+            //dataGridView2.Columns[4].Width = 200;
+            //dataGridView2.Columns[0].Width = 70;
+            //if (dataGridView2.Columns["Priority"] is DataGridViewImageColumn imgCol)
+            //{
+            //    imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            //}
+            //dataGridView1.DataSource = GetManagerForm();
+            //dataGridView1.Columns[1].Width = 200;
+            //dataGridView1.Columns[2].Width = 250;
         }
 
         private void panel9_Paint(object sender, PaintEventArgs e)
@@ -107,5 +152,180 @@ namespace SalesManagerFormApp
         {
             MessageBox.Show("welcome");
         }
+
+        public int GetDepartmentID(string DepartmentName)
+        {
+            int departmentid = 0;
+            string queryString = "SELECT DepartmentID FROM Department WHERE DepartmentName = @DepartmentName";
+            using (connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(queryString, connection))
+                {
+                    command.Parameters.AddWithValue("@DepartmentName", DepartmentName);
+
+                    try
+                    {
+                        var result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            departmentid = Convert.ToInt32(result.ToString());
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error retrieving department name: " + ex.Message);
+                        // You might want to log the exception or throw it further up
+                    }
+                }
+            }
+
+            return departmentid;
+        }
+
+
+        private void LoadDepartmentData()
+        {
+
+            using (connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Department";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                {
+                    DataTable dataTable = new DataTable();
+                    try
+                    {
+                        connection.Open();
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An error occurred: " + ex.Message);
+                    }
+                }
+            }
+        }
+        private void LoadEmployeeData()
+        {
+
+            using (connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Employee";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                {
+                    DataTable dataTable = new DataTable();
+                    try
+                    {
+                        connection.Open();
+                        adapter.Fill(dataTable);
+                        dataGridView2.DataSource = dataTable;
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An error occurred: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string DepartmentName = cbxDepartment.Text;
+            int DeptID = GetDepartmentID(DepartmentName);
+            string FirstName = txtFirstName.Text;
+            string LastName = txtLastName.Text;
+            string FullName = txtFullName.Text;
+            string BirthDate = dTPBirthDate.Value.ToString("dd/MM/yyyy");
+            string Email = txtEmail.Text;
+            string Title = cbxTitle.SelectedItem.ToString();
+            if (Title == "-Select-")
+            {
+                Title = "";
+            }
+            string Prefix = cbxPrefix.SelectedItem.ToString();
+            if (Prefix == "-Select-")
+            {
+                Prefix = "";
+            }
+            string Address = txtAddress.Text;
+            string City = txtCity.Text;
+            string State = cbxState.SelectedItem.ToString();
+            if (State == "-Select-")
+            {
+                State = "";
+            }
+            string HomePhone = txtHomePhone.Text;
+            string MobilePhone = txtMobilePhone.Text;
+            string Skype = txtskype.Text;
+            string Status = cbxStatus.SelectedItem.ToString();
+            if (Status == "-Select-")
+            {
+                Status = "";
+            }
+            string Hiredate = dTPHireDate.Value.ToString("dd/MM/yyyy");
+
+            using (connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "INSERT INTO Employee (FirstName,LastName,FullName,BirthDate,Title, Prefix,Address,City,State,HomePhone,MobilePhone,Email,Skype,DepartmentID,Status,HireDate) VALUES (@FirstName,@LastName,@FullName,@BirthDate,@Title,@Prefix,@Address,@City,@State,@HomePhone,@MobilePhone,@Email,@Skype,@DepartmentID,@Status,@HireDate)";
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
+                {
+                    // Use parameters to prevent SQL injection
+                    cmd.Parameters.AddWithValue("@FirstName", FirstName);
+                    cmd.Parameters.AddWithValue("@Lastname", LastName);
+                    cmd.Parameters.AddWithValue("@FullName", FullName);
+                    cmd.Parameters.AddWithValue("@BirthDate", BirthDate);
+                    cmd.Parameters.AddWithValue("@Title", Title);
+                    cmd.Parameters.AddWithValue("@Prefix", Prefix);
+                    cmd.Parameters.AddWithValue("@Address", Address);
+                    cmd.Parameters.AddWithValue("@City", City);
+                    cmd.Parameters.AddWithValue("@State", State);
+                    cmd.Parameters.AddWithValue("@HomePhone", HomePhone);
+                    cmd.Parameters.AddWithValue("@MobilePhone", MobilePhone);
+                    cmd.Parameters.AddWithValue("@Email", Email);
+                    cmd.Parameters.AddWithValue("@Skype", Skype);
+                    cmd.Parameters.AddWithValue("@DepartmentID", DeptID);
+                    cmd.Parameters.AddWithValue("@Status", Status);
+                    cmd.Parameters.AddWithValue("@HireDate", Hiredate);
+                    int rowsInserted = cmd.ExecuteNonQuery();
+                    MessageBox.Show("Rows Inserted Successfully");
+                    LoadDepartmentData();
+                    LoadEmployeeData();
+                }
+
+            }
+        }
+
+        private void DELETE_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0 && !dataGridView1.SelectedRows[0].IsNewRow)
+            {
+                while (dataGridView1.SelectedRows.Count > 0)
+                {
+                    dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
+                }
+
+                MessageBox.Show("Selected row(s) deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
     }
 }
+
+        
+
+
+
+
+
+

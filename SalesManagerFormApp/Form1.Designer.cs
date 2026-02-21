@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
             panel9 = new Panel();
@@ -114,7 +113,6 @@
             txtMobilePhone = new TextBox();
             txtEmail = new TextBox();
             txtskype = new TextBox();
-            notifyIcon1 = new NotifyIcon(components);
             label41 = new Label();
             label42 = new Label();
             label43 = new Label();
@@ -1074,11 +1072,6 @@
             txtskype.Size = new Size(747, 34);
             txtskype.TabIndex = 44;
             // 
-            // notifyIcon1
-            // 
-            notifyIcon1.Text = "notifyIcon1";
-            notifyIcon1.Visible = true;
-            // 
             // label41
             // 
             label41.AutoSize = true;
@@ -1237,6 +1230,7 @@
             // 
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView2.Location = new Point(3, 3);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
@@ -1537,7 +1531,6 @@
         private TextBox txtMobilePhone;
         private TextBox txtEmail;
         private TextBox txtskype;
-        private NotifyIcon notifyIcon1;
         private Label label41;
         private Label label42;
         private Label label43;

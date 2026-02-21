@@ -52,7 +52,7 @@ namespace SalesManagerFormApp
         {
             string query = "SELECT DepartmentID, DepartmentName FROM Department";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (connection = new SqlConnection(connectionString))
             {
                 DataTable dataTable = new DataTable();
 
@@ -110,10 +110,12 @@ namespace SalesManagerFormApp
         {
             try
             {
-
+                dataGridView2.AutoGenerateColumns = false;
+                dataGridView2.ForeColor = Color.Black;
                 await DepartmentNameAsync();
                 await LoadDepartmentDataAsync();
                 await LoadEmployeeDataAsync();
+                dataGridView2.CellContentClick += new DataGridViewCellEventHandler(dataGridView2_CellContentClick);
 
                 if (dataGridView1.Columns.Count >= 2)
                 {
@@ -141,9 +143,68 @@ namespace SalesManagerFormApp
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        { }
+        private async void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            if (e.RowIndex < 0) return;
+
+            string colName = dataGridView2.Columns[e.ColumnIndex].Name;
+            var row = dataGridView2.Rows[e.RowIndex];
+            int recordId = Convert.ToInt32(row.Cells["EmployeeID"].Value); // Assume "Id" is your Primary Key column
+
+            try
+            {
+                if (colName == "Edit")
+                {
+                    string FirstName = row.Cells["FirstName"].Value.ToString();
+                    await UpdateDatabaseAsync(recordId, FirstName);
+                    MessageBox.Show("Record updated in database.");
+                }
+                else if (colName == "Delete")
+                {
+                    var confirm = MessageBox.Show("Delete from database?", "Confirm", MessageBoxButtons.YesNo);
+                    if (confirm == DialogResult.Yes)
+                    {
+                        await DeleteFromDatabaseAsync(recordId);
+                        dataGridView2.Rows.RemoveAt(e.RowIndex); 
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Database Error: {ex.Message}");
+            }
+        }
+
+        private async Task UpdateDatabaseAsync(int EmployeeID, string FirstName)
+        {
+            using (connection = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Employee SET FirstName = @FirstName WHERE EmployeeID = @EmployeeID";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@FirstName", FirstName);
+                cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+
+                await connection.OpenAsync();
+                await cmd.ExecuteNonQueryAsync();
+                LoadDepartmentDataAsync();
+            }
+        }
+
+        private async Task DeleteFromDatabaseAsync(int EmployeeID)
+        {
+            using (connection = new SqlConnection(connectionString))
+            {
+                string query = "DELETE FROM Employee WHERE EmployeeID = @EmployeeID";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+
+                await connection.OpenAsync();
+                await cmd.ExecuteNonQueryAsync();
+                LoadDepartmentDataAsync();
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -281,6 +342,7 @@ namespace SalesManagerFormApp
                     {
                         MessageBox.Show("An error occurred: " + ex.Message);
                     }
+
                 }
             }
         }
@@ -312,27 +374,95 @@ namespace SalesManagerFormApp
         //Async and Await method
         private async Task LoadEmployeeDataAsync()
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM Employee";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string query = "SELECT EmployeeID,FirstName, LastName, DepartmentID, MobilePhone, Status FROM Employee";
+
+                DataTable dataTable = new DataTable();
+
+                try
                 {
-                    DataTable dataTable = new DataTable();
-                    try
+                    using (connection = new SqlConnection(connectionString))
                     {
                         await connection.OpenAsync();
-                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
-                            dataTable.Load(reader);
+                            await Task.Run(() => adapter.Fill(dataTable));
                         }
-                        dataGridView2.DataSource = dataTable;
                     }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show("An error occurred: " + ex.Message);
-                    }
+                    DisplayInDataGridView(dataTable);
+                    dataGridView2.Columns["EmployeeID"].ReadOnly = true;
+                    dataGridView2.Columns["DepartmentID"].ReadOnly = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading data: " + ex.Message);
                 }
             }
+        }
+        private void DisplayInDataGridView(DataTable dataTable)
+        {
+            dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.Columns.Clear();
+            
+            DataGridViewTextBoxColumn EmployeeID = new DataGridViewTextBoxColumn();
+            EmployeeID.Name = "EmployeeID"; 
+            EmployeeID.HeaderText = "EmployeeID"; 
+            EmployeeID.DataPropertyName = "EmployeeID"; 
+            dataGridView2.Columns.Add(EmployeeID);
+            
+            DataGridViewTextBoxColumn firstNameColumn = new DataGridViewTextBoxColumn();
+            firstNameColumn.Name = "FirstName"; 
+            firstNameColumn.HeaderText = "First Name"; 
+            firstNameColumn.DataPropertyName = "FirstName"; 
+            dataGridView2.Columns.Add(firstNameColumn);
+            
+            DataGridViewTextBoxColumn lastNameColumn = new DataGridViewTextBoxColumn();
+            lastNameColumn.Name = "LastName";
+            lastNameColumn.HeaderText = "Last Name";
+            lastNameColumn.DataPropertyName = "LastName";
+            dataGridView2.Columns.Add(lastNameColumn);
+            
+            DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
+            idColumn.Name = "DepartmentID";
+            idColumn.HeaderText = "DepartmentID";
+            idColumn.DataPropertyName = "DepartmentID";
+            idColumn.Visible = true; 
+            dataGridView2.Columns.Add(idColumn);
+
+            DataGridViewTextBoxColumn mobilephone = new DataGridViewTextBoxColumn();
+            mobilephone.Name = "MobilePhone";
+            mobilephone.HeaderText = "MobilePhone";
+            mobilephone.DataPropertyName = "MobilePhone";
+            mobilephone.Visible = true; 
+            dataGridView2.Columns.Add(mobilephone);
+
+            DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn();
+            status.Name = "Status";
+            status.HeaderText = "Status";
+            status.DataPropertyName = "Status";
+            status.Visible = true; 
+            dataGridView2.Columns.Add(status);
+
+            DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
+            editButtonColumn.Name = "Edit";
+            editButtonColumn.HeaderText = "Edit";
+            editButtonColumn.Text = "Edit";
+            editButtonColumn.UseColumnTextForButtonValue = true;
+            editButtonColumn.FlatStyle = FlatStyle.Standard;
+            dataGridView2.Columns.Add(editButtonColumn);
+
+            DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
+            deleteButtonColumn.Name = "Delete";
+            deleteButtonColumn.HeaderText = "Delete";
+            deleteButtonColumn.Text = "Delete";
+            deleteButtonColumn.UseColumnTextForButtonValue = true;
+            deleteButtonColumn.FlatStyle = FlatStyle.Standard;
+            dataGridView2.Columns.Add(deleteButtonColumn);
+            
+            dataGridView2.DataSource = dataTable;
         }
 
         //private void button1_Click(object sender, EventArgs e)
@@ -409,7 +539,7 @@ namespace SalesManagerFormApp
         private async void button1_Click(object sender, EventArgs e) // Added async
         {
             string DepartmentName = cbxDepartment.Text;
-           
+
             int DeptID = await GetDepartmentIDAsync(DepartmentName);
 
             string FirstName = txtFirstName.Text;
@@ -417,7 +547,7 @@ namespace SalesManagerFormApp
             string FullName = txtFullName.Text;
             string BirthDate = dTPBirthDate.Value.ToString("dd/MM/yyyy");
             string Email = txtEmail.Text;
-            
+
             string Title = cbxTitle.SelectedItem?.ToString() ?? "";
             if (Title == "-Select-") Title = "";
 
@@ -441,7 +571,7 @@ namespace SalesManagerFormApp
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                
+
                 await connection.OpenAsync();
 
                 string sqlQuery = "INSERT INTO Employee (FirstName,LastName,FullName,BirthDate,Title, Prefix,Address,City,State,HomePhone,MobilePhone,Email,Skype,DepartmentID,Status,HireDate) VALUES (@FirstName,@LastName,@FullName,@BirthDate,@Title,@Prefix,@Address,@City,@State,@HomePhone,@MobilePhone,@Email,@Skype,@DepartmentID,@Status,@HireDate)";
@@ -464,7 +594,7 @@ namespace SalesManagerFormApp
                     cmd.Parameters.AddWithValue("@DepartmentID", DeptID);
                     cmd.Parameters.AddWithValue("@Status", Status);
                     cmd.Parameters.AddWithValue("@HireDate", Hiredate);
-                   
+
                     int rowsInserted = await cmd.ExecuteNonQueryAsync();
 
                     MessageBox.Show("Rows Inserted Successfully");
@@ -472,6 +602,7 @@ namespace SalesManagerFormApp
                     await LoadEmployeeDataAsync();
                 }
             }
+
         }
         private void DELETE_Click(object sender, EventArgs e)
         {
@@ -488,11 +619,13 @@ namespace SalesManagerFormApp
             {
                 MessageBox.Show("Please select a row to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
+
     }
 }
+
+
+
 
 
 
